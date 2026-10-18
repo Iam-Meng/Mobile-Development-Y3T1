@@ -1,4 +1,6 @@
 /TEST*/
-/test-g2.dart
+/test-g*
+/test-e*
+/week-*/test-*
 *.[pP][dD][fF]
 *.[dD][oO][cC][xX]
