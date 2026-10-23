@@ -4,3 +4,5 @@
 /week-*/test-*
 *.[pP][dD][fF]
 *.[dD][oO][cC][xX]
+*.txt
+test*
