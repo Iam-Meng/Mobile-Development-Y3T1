@@ -1,42 +1,85 @@
 import 'package:flutter/material.dart';
 
-const String diceImage2 = 'assets/dices/dice-2.png';
-const String diceImage4 = 'assets/dices/dice-4.png';
+void main() {
+  runApp(
+    const MaterialApp(
+      title: 'My app',
+      home: Counter(),
+    ),
+  );
+}
 
-String activeDiceImage = diceImage2;
+class Counter extends StatefulWidget {
+  const Counter({
+    super.key,
+  });
 
-class DiceRoller extends StatelessWidget {
-  const DiceRoller({super.key});
+  @override
+  State<Counter> createState() => _CounterState();
+}
 
-  void rollDice() {
-    //  Display the dice 4 !
+class _CounterState extends State<Counter> {
+  int counter = 0;
+  void onPress() {
+    setState(() {
+      counter++;
+    });
   }
 
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
+    print("Counter widget - rebuilding...");
+
     return Column(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(activeDiceImage, width: 200),
-        const SizedBox(height: 20),
+        const Title("Great counter"), 
+        Label("Current value: $counter"),
         TextButton(
-          onPressed: rollDice,
-          style: TextButton.styleFrom(
-            foregroundColor: Colors.white,
-            textStyle: const TextStyle(fontSize: 28),
-          ),
-          child: const Text('Roll Dice'),
-        ),
+          onPressed: onPress,
+          child: const Text("Increment"),
+        )
       ],
     );
   }
 }
 
-void main() => runApp(
-  const MaterialApp(
-    home: Scaffold(
-      backgroundColor: Colors.deepPurple,
-      body: Center(child: DiceRoller()),
-    ),
-  ),
-);
+class Label extends StatelessWidget {
+  const Label(this.text, {super.key});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    print("Label widget - rebuilding...");
+
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Text(
+        text,
+        style: const TextStyle(
+            fontSize: 30, color: Colors.grey, decoration: TextDecoration.none),
+      ),
+    );
+  }
+}
+
+class Title extends StatelessWidget {
+  const Title(this.text, {super.key});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    print("const Title widget - rebuilding...");
+
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Text(
+        text,
+        style: const TextStyle(
+            fontSize: 50, color: Colors.blue, decoration: TextDecoration.none),
+      ),
+    );
+  }
+}
