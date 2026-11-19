@@ -41,7 +41,7 @@ void main() {
         ),
         body: Padding(
           padding: EdgeInsets.all(20),
-          child: Column(children: [MyCard()]),
+          // child: Column(children: [MyCard()]),
         ),
       ),
     ),
