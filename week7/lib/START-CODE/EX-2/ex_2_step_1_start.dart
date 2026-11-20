@@ -38,9 +38,8 @@ class _FavouriteCardState extends State<FavouriteCard> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
-      margin: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: Colors.brown.shade300)),
+        border: Border(bottom: BorderSide(color: Colors.grey)),
       ),
       child: Row(
         children: [
@@ -48,7 +47,7 @@ class _FavouriteCardState extends State<FavouriteCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(widget.title, style: TextStyle(color: Colors.blue[300], fontWeight: FontWeight.bold)),
+                Text(widget.title, style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 5),
                 Text(widget.description, style: TextStyle(color: Colors.black)),
               ],
@@ -62,7 +61,7 @@ class _FavouriteCardState extends State<FavouriteCard> {
             },
             icon: Icon(
               isFavourite? Icons.favorite : Icons.favorite_border,
-              color: isFavourite ? Colors.red : Colors.grey.shade300,
+              color: isFavourite ? Colors.red : Colors.grey,
             ),
           ),
         ],
