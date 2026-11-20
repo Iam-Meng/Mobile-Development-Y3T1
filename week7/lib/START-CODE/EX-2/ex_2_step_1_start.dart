@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(
   MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -13,7 +14,8 @@ void main() => runApp(
           FavouriteCard(title: 'title', description: 'description'),
           FavouriteCard(title: 'title', description: 'description'),
           FavouriteCard(title: 'title', description: 'description'),
-      ]),
+        ],
+      ),
     ),
   ),
 );
@@ -34,6 +36,14 @@ class FavouriteCard extends StatefulWidget {
 class _FavouriteCardState extends State<FavouriteCard> {
   bool isFavourite = false;
 
+  Icon iconFav() {
+    if (isFavourite) {
+      return Icon(Icons.favorite, color: Colors.red);
+    } else {
+      return Icon(Icons.favorite_border, color: Colors.grey);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,7 +57,13 @@ class _FavouriteCardState extends State<FavouriteCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(widget.title, style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+                Text(
+                  widget.title,
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 const SizedBox(height: 5),
                 Text(widget.description, style: TextStyle(color: Colors.black)),
               ],
@@ -59,10 +75,14 @@ class _FavouriteCardState extends State<FavouriteCard> {
                 isFavourite = !isFavourite;
               });
             },
-            icon: Icon(
-              isFavourite? Icons.favorite : Icons.favorite_border,
-              color: isFavourite ? Colors.red : Colors.grey,
-            ),
+            // method 1 (no need a function)
+            // icon: Icon(
+            //   isFavourite ? Icons.favorite : Icons.favorite_border,
+            //   color: isFavourite ? Colors.red : Colors.grey,
+            // ),
+
+            // method 2 (need function)
+            icon: iconFav(),
           ),
         ],
       ),
