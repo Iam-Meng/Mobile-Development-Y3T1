@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ProfileData {
   final String name;
   final String position;
-  final String? avatarUrl; 
+  final String? avatarUrl;
   final List<TileData> tiles;
 
   ProfileData({
